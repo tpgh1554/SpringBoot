@@ -1,6 +1,6 @@
-package com.kh.totalEx.Repository;
+package com.kh.totalEx.repository;
 
-import com.kh.totalEx.Entity.Board;
+import com.kh.totalEx.entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

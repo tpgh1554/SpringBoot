@@ -1,6 +1,6 @@
-package com.kh.totalEx.Entity;
+package com.kh.totalEx.entity;
 
-import com.kh.totalEx.Constance.ItemSellStatus;
+import com.kh.totalEx.constant.ItemSellStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,4 +1,4 @@
-package com.kh.totalEx.Entity;
+package com.kh.totalEx.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,19 +8,20 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "board")
+@Table(name = "member")
 @Getter
 @Setter
 @ToString
-public class Board {
+public class Member {
     @Id
+    @Column(name="member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long boardId;
-    private String title;
-    @Lob
-    @Column(length = 10000)
-    private String content;
-    private String imgPath;
+    private Long id;
+    private String name;
+    private String pwd;
+    @Column(unique = true)
+    private String email;
+    private String image;
     private LocalDateTime regDate;
 
 }
