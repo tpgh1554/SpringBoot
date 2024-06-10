@@ -27,6 +27,8 @@ public class OrderRepositoryTest {
     ItemRepository itemRepository;
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    OrderItemRepository orderItemRepository;
     @PersistenceContext
     EntityManager em;
 
@@ -94,7 +96,16 @@ public class OrderRepositoryTest {
         order.getOrderItemList().remove(0);
         em.flush(); // 강제 DB 연결
         log.info(String.valueOf(order.getOrderItemList().size()));
-
-
     }
+    @Test
+    @DisplayName("지연 로딩 테스트")
+    public void lazyLoadingTest() {
+        Order order = this.createOrder();
+        Long orderItemId = order.getOrderItemList().get(0).getId();
+        em.flush();
+        em.clear();
+        OrderItem orderItem = orderItemRepository.findById(orderItemId).orElseThrow(EntityNotFoundException::new);
+        log.info("Order class : " + orderItem.getOrder().getClass());
+    }
+
 }
